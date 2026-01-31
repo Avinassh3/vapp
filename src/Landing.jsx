@@ -98,10 +98,6 @@ const hearts = useMemo(() => {
             Hey Babyy… 💗
           </h1>
 
-          <p className="mt-2 max-w-xs text-lg text-rose-500 sm:max-w-md sm:text-xl">
-            Avinassh here asking you for Valentine 💌
-          </p>
-
           <button
             onClick={() => setStep(2)}
             className="mt-8 rounded-full bg-rose-500 px-8 py-3 text-lg font-semibold text-white shadow-lg"
@@ -165,7 +161,7 @@ const hearts = useMemo(() => {
               onClick={() => setStep(3)}
               className="rounded-full bg-rose-500 px-8 py-3 text-lg font-semibold text-white shadow-lg"
             >
-              Okay… YES 💖
+            YESSSS 💖
             </button>
 
             {photoIndex < memories.length - 1 && (
@@ -201,6 +197,12 @@ const hearts = useMemo(() => {
           >
             YAAYY 💖💖💖
           </motion.h1>
+          <p className="relative z-10 mt-4 max-w-md text-lg text-rose-500">
+  Thank you for saying yes, babyy 💖  
+  You’ve made me so happy today.  
+  I can’t wait to laugh, love,  
+  and make beautiful memories together this Valentine’s.
+</p>
         </motion.div>
       )}
     </div>
