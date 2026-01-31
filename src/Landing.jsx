@@ -29,7 +29,7 @@ export default function Landing() {
   }, [step]);
 
   // -------- OPTIMIZED CONSTANT HEARTS (RUN ONCE) --------
-  const isMobile = window.innerWidth < 640;
+
 
 const hearts = useMemo(() => {
   const isMobile = window.innerWidth < 640;
