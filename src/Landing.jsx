@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import kitty from "../src/assets/kitty.png";
+import kitty from "../src/assets/kitty.jpg";
 
 export default function Landing() {
   const [step, setStep] = useState(1);
@@ -17,14 +17,39 @@ export default function Landing() {
       {/* STEP 1 */}
       {step === 1 && (
         <>
-          <motion.img
-            src={kitty}
-            alt="cute kitty"
-            className="w-52 drop-shadow-xl animate-float"
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          />
+<motion.div
+  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+  animate={{
+    opacity: 1,
+    y: 0,
+    scale: 1,
+  }}
+  transition={{ duration: 1.2, ease: "easeOut" }}
+  className="relative"
+>
+  {/* Soft glow behind */}
+  <div className="absolute inset-0 rounded-full blur-2xl bg-pink-200 opacity-60"></div>
+
+  {/* Kitty */}
+  <motion.img
+    src={kitty}
+    alt="cute kitty"
+    className="relative w-52 rounded-3xl object-cover 
+               drop-shadow-[0_10px_30px_rgba(255,105,180,0.25)]
+               kitty-mask"
+    animate={{
+      y: [0, -8, 0],
+      rotate: [0, 0.8, -0.8, 0],
+      scale: [1, 1.02, 1],
+    }}
+    transition={{
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+</motion.div>
+
 
           <motion.h1
             className="mt-6 text-3xl font-semibold text-rose-600 sm:text-4xl"
@@ -35,14 +60,6 @@ export default function Landing() {
             Hey Babyy… 💗
           </motion.h1>
 
-          <motion.p
-            className="mt-2 text-lg text-rose-500 sm:text-xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
-            Avinassh here asking you for Valentine 💌
-          </motion.p>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -116,23 +133,41 @@ export default function Landing() {
         </>
       )}
 
-      {/* floating hearts */}
-      {Array.from({ length: 12 }).map((_, i) => (
-        <motion.div
-          key={i}
-          className="pointer-events-none absolute select-none text-xl text-pink-400"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: [0, 1, 1, 0], y: [-20 - i * 12] }}
-          transition={{
-            duration: 3 + i * 0.3,
-            repeat: Infinity,
-            delay: i * 0.4,
-          }}
-          style={{ left: `${5 + i * 7}%`, bottom: "10px" }}
-        >
-          ❤️
-        </motion.div>
-      ))}
+{/* FULL SCREEN FLOATING HEARTS */}
+{Array.from({ length: 40 }).map((_, i) => {
+  const size = Math.random() * 14 + 16; // size variation
+  const duration = Math.random() * 6 + 6; // speed variation
+  const left = Math.random() * 100; // full width spread
+
+  return (
+    <motion.div
+      key={i}
+      className="pointer-events-none absolute select-none"
+      style={{
+        left: `${left}%`,
+        fontSize: `${size}px`,
+      }}
+      initial={{
+        top: "110%",
+        opacity: 0,
+      }}
+      animate={{
+        top: "-20%",
+        opacity: [0, 1, 1, 0],
+      }}
+      transition={{
+        duration,
+        repeat: Infinity,
+        delay: Math.random() * 5,
+        ease: "easeInOut",
+      }}
+    >
+      ❤️
+    </motion.div>
+  );
+})}
+
+
     </div>
   );
 }
