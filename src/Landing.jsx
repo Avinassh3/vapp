@@ -31,17 +31,19 @@ export default function Landing() {
   // -------- OPTIMIZED CONSTANT HEARTS (RUN ONCE) --------
   const isMobile = window.innerWidth < 640;
 
-  const hearts = useMemo(() => {
-    const count = isMobile ? 14 : 26;
+const hearts = useMemo(() => {
+  const isMobile = window.innerWidth < 640;
+  const count = isMobile ? 14 : 26;
 
-    return Array.from({ length: count }).map(() => ({
-      left: Math.random() * 100,
-      size: Math.random() * 10 + 14,
-      duration: Math.random() * 6 + 8,
-      delay: Math.random() * 5,
-      emoji: Math.random() > 0.5 ? "❤️" : "💖",
-    }));
-  }, []);
+  return Array.from({ length: count }).map(() => ({
+    left: Math.random() * 100,
+    size: Math.random() * 10 + 14,
+    duration: Math.random() * 6 + 8,
+    delay: Math.random() * 5,
+    emoji: Math.random() > 0.5 ? "❤️" : "💖",
+  }));
+}, []);
+
   // -----------------------------------------------------
 
   return (
